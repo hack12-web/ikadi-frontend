@@ -3,14 +3,39 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HeaderComponent } from './components/layaout/header/header.component';
+import { MaterialModule } from './material/material.module';
+import { SideNavComponent } from './components/layaout/side-nav/side-nav.component';
+import { HomeDashboardComponent } from './components/dashboard/home-dashboard/home-dashboard.component';
+import { AdministrationSystComponent } from './components/dashboard/administration-syst/administration-syst.component';
+import { LoginComponent } from './auth/login/login.component';
+import { HttpClientModule } from '@angular/common/http';
+
+//we need to import this before using form in angular
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SnackOneComponent } from './components/snack-bar/snack-one/snack-one.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DashboardComponent,
+    HeaderComponent,
+    SideNavComponent,
+    HomeDashboardComponent,
+    AdministrationSystComponent,
+    LoginComponent,
+    SnackOneComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

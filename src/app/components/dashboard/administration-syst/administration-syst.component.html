@@ -1,0 +1,112 @@
+<mat-tab-group>
+    <mat-tab label="ADMIN SETTINGS">
+        <div class="container-fluid">
+            <div class="row mt-2 shadow-lg">
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        <span>ADD ADMIN</span>
+                      </mat-panel-title>
+                      <mat-panel-description>
+                        <!-- Currently I am {{panelOpenState ? 'open' : 'closed'}} -->
+                      </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <div class="container-fluid">
+                      <form [formGroup]="adminForm" (submit)="postAdminItems(adminForm.value)">
+                        <mat-form-field appearance="fill" class="addFormElement">
+                            <mat-label>UNIQUE ID</mat-label>
+                            <input matInput type="text" formControlName="uniqueID" placeholder="UNIQUE ID">
+                            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill" class="addFormElement">
+                            <mat-label>USERNAME</mat-label>
+                            <input matInput type="text" formControlName="username" placeholder="USERNAMR">
+                            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                        </mat-form-field>
+                        <br>
+                        <mat-form-field appearance="fill" class="addFormElement">
+                            <mat-label>PASSWORD</mat-label>
+                            <input matInput type="password" formControlName="password" placeholder="PASSWORD">
+                            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                        </mat-form-field>
+                        <button mat-raised-button color="primary" [disabled]="adminForm.invalid" >ADD RECORD</button>
+                      </form>
+                    </div>
+                </mat-expansion-panel>
+            </div>
+            <div class="row mt-2 shadow-lg">
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        <span>UPDATE ADMIN</span>
+                      </mat-panel-title>
+                      <mat-panel-description>
+                        <!-- Currently I am {{panelOpenState ? 'open' : 'closed'}} -->
+                      </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <div class="container-fluid">
+                      <p>U can add admin here</p>
+                    </div>
+                </mat-expansion-panel>
+            </div>
+            <div class="row mt-2 shadow-lg">
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        <span>DELETE ADMIN</span>
+                      </mat-panel-title>
+                      <mat-panel-description>
+                        <!-- Currently I am {{panelOpenState ? 'open' : 'closed'}} -->
+                      </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <div class="container-fluid">
+                      <form [formGroup]="deleteForm" (submit)="deleteAdminItems(deleteForm.value)">
+                        <mat-form-field appearance="fill" class="addFormElement">
+                            <mat-label>ID</mat-label>
+                            <input matInput type="number" formControlName="id" placeholder="ID">
+                            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                        </mat-form-field>
+                        <button mat-raised-button color="primary" [disabled]="deleteForm.invalid" >DELETE RECORD</button>
+                      </form>
+                    </div>
+                </mat-expansion-panel>
+            </div>
+            <div class="row mt-2 shadow-lg">
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        <span>VIEW ADMIN</span>
+                      </mat-panel-title>
+                      <mat-panel-description>
+                        <!-- Currently I am {{panelOpenState ? 'open' : 'closed'}} -->
+                      </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <div class="container-fluid">
+                        <button mat-raised-button color="primary" (click)="getAdminItems()">refresh</button>
+                        <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">UNIQUE ID</th>
+                                <th scope="col">USERNAME</th>
+                                <th scope="col">PASSWORD</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let item of adminItems" >
+                                <th scope="row">{{ item.id }}</th>
+                                <td>{{ item.uniqueID }}</td>
+                                <td>{{ item.username }} </td>
+                                <td>{{ item.password }}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                    </div>
+                </mat-expansion-panel>
+            </div>
+        </div>
+    </mat-tab>
+    <mat-tab label="Second"> Content 2 </mat-tab>
+    <mat-tab label="Third"> Content 3 </mat-tab>
+  </mat-tab-group>
+  

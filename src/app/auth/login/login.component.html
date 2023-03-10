@@ -1,0 +1,37 @@
+<div class="container">
+    <br><br>
+    <div class="row">
+        <div class="d-none d-md-block col-sm-6 mt-3">
+            <img src="assets/img/loginIMG.jpg" class="img-fluid" alt="" srcset="">
+        </div>
+        <div class="col-12 col-sm-6 mt-3">
+            <mat-card class="example-card shadow-lg">
+                <mat-card-content class="text-center">
+                    <div class="card-header-login">
+                        <br><br>
+                        <span class="card-title">IKADI LOGIN</span>
+                        <br>
+                        <span class="text-white">ONLY ADMIN CAN LOGIN HERE</span>
+                    </div>
+                    <form [formGroup]="loginForm" (submit)="loginAdmin(loginForm.value)">
+                        <mat-form-field>
+                            <mat-label>username</mat-label>
+                            <input type="text" matInput placeholder="root" formControlName="username" [autocomplete]="false">
+                        </mat-form-field>
+                        <br>
+                        <mat-form-field>
+                            <mat-label>password</mat-label>
+                            <input type="password" matInput placeholder="root" formControlName="password" [autocomplete]="false">
+                        </mat-form-field>
+                        <br>
+                        <button mat-raised-button color="primary" [disabled]="loginForm.invalid">LOGIN</button>
+                    </form>
+                </mat-card-content>
+                <mat-card-actions>
+                    
+                </mat-card-actions>
+                <mat-progress-bar mode="indeterminate" *ngIf="showSpinner"></mat-progress-bar>
+              </mat-card>
+        </div>
+    </div>
+</div>
