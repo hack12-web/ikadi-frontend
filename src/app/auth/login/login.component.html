@@ -25,10 +25,13 @@
                         </mat-form-field>
                         <br>
                         <button mat-raised-button color="primary" [disabled]="loginForm.invalid">LOGIN</button>
+                        <br><br>
                     </form>
                 </mat-card-content>
                 <mat-card-actions>
+                 <div class="card-footer-login text-center shadow-lg">
                     
+                 </div>   
                 </mat-card-actions>
                 <mat-progress-bar mode="indeterminate" *ngIf="showSpinner"></mat-progress-bar>
               </mat-card>

@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 //we need to import this before using form in angular
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SnackOneComponent } from './components/snack-bar/snack-one/snack-one.component';
+import { FooterComponent } from './components/layaout/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { SnackOneComponent } from './components/snack-bar/snack-one/snack-one.co
     HomeDashboardComponent,
     AdministrationSystComponent,
     LoginComponent,
-    SnackOneComponent
+    SnackOneComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
