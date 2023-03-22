@@ -20,22 +20,77 @@
             </mat-expansion-panel-header>
             <div class="container-fluid">
               <div class="row">
-                <button mat-raised-button (click)="showAdminSyst()" >ADMIN UPDATE</button>
+                <button mat-stroked-button (click)="showAdminSyst()" >ADMIN SETTINGS</button>
               </div>
               <div class="row mt-1">
-                <button mat-raised-button (click)="showAdminSyst()" >GIVE ACCESS</button>
+                <button mat-stroked-button (click)="showAdminSyst()">GIVE ACCESS</button>
               </div>
               <div class="row mt-1">
-                <button mat-raised-button (click)="showAdminSyst()" >UPDATE DATABASE</button>
+                <button mat-stroked-button (click)="showAdminSyst()">UPDATE DATABASE</button>
+              </div>
+              <div class="row mt-1">
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>USERS</mat-panel-title>
+                    <mat-panel-description>
+
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <div class="container-fluid">
+                    <div class="row">
+                      <button mat-stroked-button>SIMPLE USER</button>
+                    </div>
+                    <div class="row mt-1">
+                      <button mat-stroked-button>SOCIETY</button>
+                    </div>
+                  </div>
+                </mat-expansion-panel>
               </div>
             </div>
           </mat-expansion-panel>
         </div>
         <div class="row mt-2">
-          <button mat-raised-button>Primary</button>
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <span>SYSTEMS</span>
+              </mat-panel-title>
+              <mat-panel-description>
+                <!-- Currently I am {{panelOpenState ? 'open' : 'closed'}} -->
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="container-fluid">
+              <div class="row">
+                <button mat-stroked-button>PROVINCE</button>
+              </div>
+              <div class="row mt-1">
+                <button mat-stroked-button>COMMUNE</button>
+              </div>
+              <div class="row mt-1">
+                <button mat-stroked-button>ZONE</button>
+              </div>
+              <div class="row mt-1">
+                <button mat-stroked-button>COLLINE</button>
+              </div>
+            </div>
+          </mat-expansion-panel>
         </div>
         <div class="row mt-2">
-          <button mat-raised-button>Primary</button>
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <span>PEOPLE</span>
+              </mat-panel-title>
+              <mat-panel-description>
+                <!-- Currently I am {{panelOpenState ? 'open' : 'closed'}} -->
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="container-fluid">
+              <div class="row">
+                <button mat-stroked-button (click)="showAdminPeople()">CRUD</button>
+              </div>
+            </div>
+          </mat-expansion-panel>
         </div>
         <div class="row mt-2">
           <button mat-raised-button>Primary</button>
@@ -67,6 +122,9 @@
             </div>
             <div *ngIf="showAdministrationSyst">
               <app-administration-syst></app-administration-syst>
+            </div>
+            <div *ngIf="showAdministrationPeople">
+              <app-administration-people></app-administration-people>
             </div>
         </div>
     </div>

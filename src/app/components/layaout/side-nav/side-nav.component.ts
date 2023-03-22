@@ -10,10 +10,17 @@ export class SideNavComponent {
   showFiller = true;
   showAppHomeDash = true;
   showAdministrationSyst = false;
-  
+  showAdministrationPeople = false;
+
+  constructor(){}
 
   public showAdminSyst():void{
     this.showAdministrationSyst = true;
+    this.showAppHomeDash = false;
+  }
+  public showAdminPeople():void{
+    this.showAdministrationPeople = true;
+    this.showAdministrationSyst = false;
     this.showAppHomeDash = false;
   }
 }

@@ -26,9 +26,7 @@ export class AdministrationSystComponent {
       id:["", Validators.required]
     });
     this.getAdminItems();
-    this.openSnackBar("Iloveu","OK");
   }
-
   public async getAdminItems():Promise<void>{
     await this.service.getAdmin().subscribe(data =>{
       this.adminItems = data;
@@ -36,14 +34,14 @@ export class AdministrationSystComponent {
   }
   public async postAdminItems(value: any){
       await this.service.postAdmin(value).subscribe(res =>{
-      this.openSnackBar(res.toString(), "OK");
-      this.adminForm.reset();
+      //this.openSnackBar(res.toString(), "OK");
     });
-
+    this.openSnackBar("Adding successfully","OK");
+    this.adminForm.reset();
   }
   public async deleteAdminItems(value: any){
-    return await this.service.deleteAdmin(value).subscribe(res =>{
-      console.log(res);
+    return await this.service.deleteAdmin(value.id).subscribe(res =>{
+      console.log(res.toString());
     });
   }
   public openSnackBar(message: string, action: string){

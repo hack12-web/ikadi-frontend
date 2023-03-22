@@ -10,6 +10,7 @@ export class SharedService {
 
   constructor(private http: HttpClient) { }
 
+  //Admin
   public getAdmin():Observable<any[]>{
     return this.http.get<any>(this.APIUrl+'/Admin');
   }
@@ -17,12 +18,27 @@ export class SharedService {
     return this.http.post<any>(this.APIUrl+'/Admin', value);
   }
   public deleteAdmin(value: any){
-    return this.http.delete<any>(this.APIUrl+'/Admin'+ value);
+    return this.http.delete<any>(this.APIUrl+'/Admin/'+ value);
   }
   public loginAdmin(value: any){
-    this.http.post(this.APIUrl+'/Admin/', value);
+    this.http.post(this.APIUrl+'/Admin', value);
     return this.http.request.toString();
   }
+  //End admin
+  //Personne
+  public getPersonnes():Observable<any[]>{
+    return this.http.get<any>(this.APIUrl+'/Personne');
+  }
+  public postPersonne(value:any){
+    return this.http.post<any>(this.APIUrl+'/Personne',value);
+  }
+  public updatePersonne(value:any){
+    return this.http.put<any>(this.APIUrl+'/Personne',value);
+  }
+  public deletePersonne(value:any){
+    return this.http.delete<any>(this.APIUrl+'/Personne/'+ value);
+  }
+  //End Personne
   public isLoggedIn(){
     return of(false).pipe(delay(500));
   }

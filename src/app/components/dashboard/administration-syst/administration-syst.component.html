@@ -38,7 +38,7 @@
                 <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
                     <mat-expansion-panel-header>
                       <mat-panel-title>
-                        <span>UPDATE ADMIN</span>
+                        <span>UPDATE AND DELETE ADMIN</span>
                       </mat-panel-title>
                       <mat-panel-description>
                         <!-- Currently I am {{panelOpenState ? 'open' : 'closed'}} -->
@@ -54,6 +54,7 @@
                                     <th scope="col">UNIQUE ID</th>
                                     <th scope="col">USERNAME</th>
                                     <th scope="col">PASSWORD</th>
+                                    <th scope="col">ACTIONS</th>
                                   </tr>
                                 </thead>
                                 <tbody>
@@ -62,6 +63,9 @@
                                     <td>{{ item.uniqueID }}</td>
                                     <td>{{ item.username }} </td>
                                     <td>{{ item.password }}</td>
+                                    <td>
+                                      <button mat-raised-button color="warn" (click)="deleteAdminItems(item)" ><mat-icon>delete</mat-icon> Delete</button>
+                                    </td>
                                   </tr>
                                 </tbody>
                             </table>

@@ -12,11 +12,13 @@ import { HomeDashboardComponent } from './components/dashboard/home-dashboard/ho
 import { AdministrationSystComponent } from './components/dashboard/administration-syst/administration-syst.component';
 import { LoginComponent } from './auth/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
+import { WebcamModule } from 'ngx-webcam';
 
 //we need to import this before using form in angular
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SnackOneComponent } from './components/snack-bar/snack-one/snack-one.component';
 import { FooterComponent } from './components/layaout/footer/footer.component';
+import { AdministrationPeopleComponent } from './components/dashboard/administration-people/administration-people.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import { FooterComponent } from './components/layaout/footer/footer.component';
     LoginComponent,
     SnackOneComponent,
     FooterComponent,
+    AdministrationPeopleComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,8 @@ import { FooterComponent } from './components/layaout/footer/footer.component';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    WebcamModule
   ],
   providers: [],
   bootstrap: [AppComponent]
