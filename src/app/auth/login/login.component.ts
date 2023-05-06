@@ -37,14 +37,20 @@ export class LoginComponent {
     console.log("Wrong username and password");
   }
   public loginAdmin(value: any):void{
+    this.showSpinnerProgressBar();
     if(value.username == "root" && value.password == "root")
     {
-      this.route.navigateByUrl("/dashboard");
+      setTimeout(() =>{
+        this.route.navigateByUrl("/dashboard");
+      },3000);
     }
-    this.showSpinnerProgressBar();
-    this.loginForm.reset();
+    else{
+      this.showSpinnerProgressBar();
+      this.loginForm.reset();
+    }
   }
+  
   public showSpinnerProgressBar(){
-    return of(this.showSpinner = true).pipe(delay(500));
+    return of(this.showSpinner = true).pipe(delay(1000));
   }
 }

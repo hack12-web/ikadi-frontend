@@ -1,116 +1,158 @@
 <mat-tab-group>
     <mat-tab label="ADD PERSONNE">
         <div class="container-fluid">
-            <button mat-icon-button color="primary"><i class="fa fa-refresh" aria-hidden="true"></i></button>
-            <form [formGroup]="peopleForm" (ngSubmit)="postPersonnes(peopleForm.value)">
-                <div class="row mt-2">
-                    <div class="col-8">
-                        <mat-form-field class="inputFild">
-                            <mat-label>NOM PERE</mat-label>
-                            <input type="text" formControlName="nom_Pr" matInput  placeholder="Ex. nyongero">
-                        </mat-form-field>
-                        <mat-form-field class="inputFild">
-                            <mat-label>AGE PERE</mat-label>
-                            <input type="number" formControlName="ag_Pr" matInput>
-                        </mat-form-field>
-                        <mat-form-field class="inputFild">
-                            <mat-label>FONCTION PERE</mat-label>
-                            <input type="text" formControlName="fnc_Pr" matInput  placeholder="Ex. ingenieur">
-                        </mat-form-field>
-                        <mat-form-field class="inputFild">
-                            <mat-label>IL EST VIVANT PERE</mat-label>
-                            <input type="text" formControlName="is_Alifepr" matInput  placeholder="Ex. yes or no">
-                        </mat-form-field>
+            <div class="row mt-2">
+                <div class="col-8">
+                    <button mat-icon-button color="primary"><mat-icon>refresh</mat-icon></button>
+                    <form [formGroup]="peopleForm" (ngSubmit)="postPersonnes(peopleForm.value)">
+                        <fieldset class="personInfo">
+                            <legend>CHILD INFORMATION</legend>
+                            <mat-form-field class="inputFild">
+                                <mat-label>NOM</mat-label>
+                                <input type="text" formControlName="nom_Enf" matInput  placeholder="Ex. mr robot" [autocomplete]="false" >
+                            </mat-form-field>
+                            <mat-form-field class="inputFild">
+                                <mat-label>PRENOM</mat-label>
+                                <input type="text" formControlName="nom_Enf" matInput  placeholder="Ex. mr robot" [autocomplete]="false">
+                            </mat-form-field>
+                            <mat-form-field appearance="fill" class="inputFild">
+                                <mat-label>SEX ENFANT</mat-label>
+                                <mat-select>
+                                  <mat-option *ngFor="let s of gender" [value]="s.value" formControlName="sex_Enf" name="sex_Enf" ngDefaultControl >
+                                    {{s.viewValue}}
+                                  </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <mat-form-field class="inputFild">
+                                <mat-label>PROFESSION</mat-label>
+                                <input type="text"  matInput  placeholder="Ex. Ingeneer" [autocomplete]="false">
+                            </mat-form-field>
+                            <mat-form-field class="inputFild" >
+                                <mat-label>DATE NAISSANCE ENFANT</mat-label>
+                                <input matInput [matDatepicker]="picker" formControlName="date_Nsc">
+                                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                                <!-- <input matInput type="text" formControlName="date_Nsc"> -->
+                            </mat-form-field>
+                        </fieldset>
                         <br>
-                        <mat-form-field class="inputFild">
-                            <mat-label>NATIONALITE PERE</mat-label>
-                            <input type="text" formControlName="nt_Pr" matInput  placeholder="Ex. burundaise">
-                        </mat-form-field>
-                        <mat-form-field class="inputFild">
-                            <mat-label>COLLINE PERE</mat-label>
-                            <input type="text" formControlName="cl_Pr" matInput  placeholder="Ex. typing...">
-                        </mat-form-field>
-                        <mat-form-field class="inputFild">
-                            <mat-label>COLLINE NOM PERE</mat-label>
-                            <input type="text" formControlName="cl_Npr" matInput  placeholder="Ex. typings...">
-                        </mat-form-field>
-                        <mat-form-field class="inputFild">
-                            <mat-label>NOM MERE</mat-label>
-                            <input type="text" formControlName="nm_Mr" matInput  placeholder="Ex. sarah">
-                        </mat-form-field>
+                        <fieldset class="fatherInfo">
+                            <legend>FATHER INFORMATION</legend>
+                            <mat-form-field class="inputFild">
+                                <mat-label>NOM</mat-label>
+                                <input type="text" formControlName="nom_Pr" matInput  placeholder="Ex. nyongero">
+                            </mat-form-field>
+                            <mat-form-field class="inputFild">
+                                <mat-label>PRENOM</mat-label>
+                                <input type="text" formControlName="nom_Pr" matInput  placeholder="Ex. claude">
+                            </mat-form-field>
+                            <mat-form-field class="inputFild">
+                                <mat-label>AGE PERE</mat-label>
+                                <input type="number" formControlName="ag_Pr" matInput>
+                            </mat-form-field>
+                            <mat-form-field class="inputFild">
+                                <mat-label>FONCTION PERE</mat-label>
+                                <input type="text" formControlName="fnc_Pr" matInput  placeholder="Ex. ingenieur">
+                            </mat-form-field>
+                            <br>
+                            <mat-form-field appearance="fill" class="inputFild">
+                                <mat-label>IL EST VIVANT PERE</mat-label>
+                                <mat-select>
+                                  <mat-option *ngFor="let live of islive" [value]="live.value" formControlName="is_Alifepr" name="is_Alifepr" ngDefaultControl>
+                                    {{live.viewValue}}
+                                  </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <mat-form-field class="inputFild">
+                                <mat-label>NATIONALITE PERE</mat-label>
+                                <input type="text" formControlName="nt_Pr" matInput  placeholder="Ex. burundaise">
+                            </mat-form-field>
+                            <mat-form-field class="inputFild">
+                                <mat-label>COLLINE PERE</mat-label>
+                                <input type="text" formControlName="cl_Pr" matInput  placeholder="Ex. typing...">
+                            </mat-form-field>
+                            <mat-form-field class="inputFild">
+                                <mat-label>COLLINE NOM PERE</mat-label>
+                                <input type="text" formControlName="cl_Npr" matInput  placeholder="Ex. typings...">
+                            </mat-form-field>
+                        </fieldset>
                         <br>
-                        <mat-form-field class="inputFild">
-                            <mat-label>AGE MERE</mat-label>
-                            <input type="number" formControlName="ag_Mr" matInput>
-                        </mat-form-field>
-                        <mat-form-field class="inputFild">
-                            <mat-label>FONCTION MERE</mat-label>
-                            <input type="text" formControlName="fnc_mr" matInput  placeholder="Ex. business woman">
-                        </mat-form-field>
-                        <mat-form-field class="inputFild">
-                            <mat-label>ELLE EST VIVANTE MERE</mat-label>
-                            <input type="text" formControlName="is_Alifemr" matInput  placeholder="Ex. yes or no">
-                        </mat-form-field>
-                        <mat-form-field class="inputFild">
-                            <mat-label>NATIONALITE MERE</mat-label>
-                            <input type="text" formControlName="nt_Mr" matInput  placeholder="Ex. burundaise">
-                        </mat-form-field>
+                        <fieldset class="motherInfo">
+                            <legend>MOTHER INFORMATION</legend>
+                            <mat-form-field class="inputFild">
+                                <mat-label>NOM</mat-label>
+                                <input type="text" formControlName="nm_Mr" matInput  placeholder="Ex. sarah">
+                            </mat-form-field>
+                            <mat-form-field class="inputFild">
+                                <mat-label>PRENOM</mat-label>
+                                <input type="text" formControlName="nm_Mr" matInput  placeholder="Ex. sarah">
+                            </mat-form-field>
+                            <mat-form-field class="inputFild">
+                                <mat-label>AGE MERE</mat-label>
+                                <input type="number" formControlName="ag_Mr" matInput>
+                            </mat-form-field>
+                            <mat-form-field class="inputFild">
+                                <mat-label>FONCTION MERE</mat-label>
+                                <input type="text" formControlName="fnc_mr" matInput  placeholder="Ex. business woman">
+                            </mat-form-field>
+                            <br>
+                            <mat-form-field appearance="fill" class="inputFild">
+                                <mat-label>ELLE EST VIVANTE MERE</mat-label>
+                                <mat-select>
+                                  <mat-option *ngFor="let live of islive" [value]="live.value" formControlName="is_Alifemr" name="is_Alifemr" ngDefaultControl>
+                                    {{live.viewValue}}
+                                  </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <mat-form-field class="inputFild">
+                                <mat-label>NATIONALITE MERE</mat-label>
+                                <input type="text" formControlName="nt_Mr" matInput  placeholder="Ex. burundaise">
+                            </mat-form-field>
+                            <mat-form-field class="inputFild">
+                                <mat-label>COLLINE MERE</mat-label>
+                                <input type="text" formControlName="cl_Mr" matInput  placeholder="Ex. typings...">
+                            </mat-form-field>
+                            <mat-form-field class="inputFild">
+                                <mat-label>COLLINE NOM MERE</mat-label>
+                                <input type="text" formControlName="cl_Nmr" matInput  placeholder="Ex. typings...">
+                            </mat-form-field>
+                        </fieldset>
                         <br>
-                        <mat-form-field class="inputFild">
-                            <mat-label>COLLINE MERE</mat-label>
-                            <input type="text" formControlName="cl_Mr" matInput  placeholder="Ex. typings...">
-                        </mat-form-field>
-                        <mat-form-field class="inputFild">
-                            <mat-label>COLLINE NOM MERE</mat-label>
-                            <input type="text" formControlName="cl_Nmr" matInput  placeholder="Ex. typings...">
-                        </mat-form-field>
-                        <mat-form-field class="inputFild">
-                            <mat-label>NOM ENFANT</mat-label>
-                            <input type="text" formControlName="nom_Enf" matInput  placeholder="Ex. mr robot">
-                        </mat-form-field>
-                        <mat-form-field class="inputFild">
-                            <mat-label>SEX ENFANT</mat-label>
-                            <input type="text" formControlName="sex_Enf" matInput  placeholder="Ex. M or F">
-                        </mat-form-field>
+                        <fieldset class="systeInfo">
+                            <legend>SYSTEM ACTION</legend>
+                            <mat-form-field class="inputFild">
+                                <mat-label>DATE ENREGISTREMENT</mat-label>
+                                <input matInput [matDatepicker]="picker_two" formControlName="date_Enreg">
+                                <mat-datepicker-toggle matIconSuffix [for]="picker_two"></mat-datepicker-toggle>
+                                <mat-datepicker #picker_two></mat-datepicker>
+                                <!-- <input matInput type="text" formControlName="date_Enreg">  -->
+                            </mat-form-field>
+                            <mat-form-field class="inputFild">
+                                <mat-label>NOM AGENT</mat-label>
+                                <input type="text" formControlName="empl_Name" matInput  placeholder="Ex. claude">
+                            </mat-form-field>
+                        </fieldset>
                         <br>
-                        <mat-form-field class="inputFild" >
-                            <mat-label>DATE NAISSANCE ENFANT</mat-label>
-                            <!-- <input matInput [matDatepicker]="picker" formControlName="date_Nsc">
-                            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                            <mat-datepicker #picker></mat-datepicker> -->
-                            <input matInput type="date" formControlName="date_Nsc">
-                        </mat-form-field>
-                        <mat-form-field class="inputFild">
-                            <mat-label>DATE ENREGISTREMENT</mat-label>
-                            <!-- <input matInput [matDatepicker]="picker_two" formControlName="date_Enreg">
-                            <mat-datepicker-toggle matIconSuffix [for]="picker_two"></mat-datepicker-toggle>
-                            <mat-datepicker #picker_two></mat-datepicker> -->
-                            <input matInput type="date" formControlName="date_Enreg"> 
-                        </mat-form-field>
-                        <mat-form-field class="inputFild">
-                            <mat-label>NOM AGENT</mat-label>
-                            <input type="text" formControlName="empl_Name" matInput  placeholder="Ex. claude">
-                        </mat-form-field>
                         <button mat-raised-button color="primary" [disabled]="peopleForm.invalid">ADD RECORD</button>
-                    </div>
-                    <div class="col-4">
-                        <div class="container-fluid">
-                            <p>Profile personne</p>
-                            <div class="row">
-                                <div class="col">
-                                    <webcam [height]="200" [width]="200" [trigger]="triggerObservable" (imageCapture)="handleImage($event)"></webcam>
-                                    <br>
-                                    <button mat-flat-button color="primary" (click)="triggerSnapshot()">Take</button>
-                                </div>
-                                <div class="col" *ngIf="webcamImage">
-                                    <h2 *ngIf="false">is your image here</h2>
-                                    <img [src]="webcamImage.imageAsDataUrl" [height]="150" [width]="200">
-                                </div>
+                    </form>
+                </div>
+                <div class="col-4">
+                    <div class="container-fluid">
+                        <p>PERSON PROFILE</p>
+                        <div class="row">
+                            <div class="col">
+                                <webcam [height]="200" [width]="200" [trigger]="triggerObservable" (imageCapture)="handleImage($event)"></webcam>
+                                <br>
+                                <button mat-flat-button color="primary" (click)="triggerSnapshot()">Take</button>
+                            </div>
+                            <div class="col" *ngIf="webcamImage">
+                                <h2 *ngIf="false">is your image here</h2>
+                                <img [src]="webcamImage.imageAsDataUrl" [height]="150" [width]="200">
                             </div>
                         </div>
                     </div>
                 </div>
-            </form>
+            </div>
         </div>
     </mat-tab>
     <mat-tab label="UPDATE AND DELETE PERSONNE"> Content 2 </mat-tab>

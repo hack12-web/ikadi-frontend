@@ -6,7 +6,9 @@ import { Observable, delay, of } from 'rxjs';
   providedIn: 'root'
 })
 export class SharedService {
-  readonly APIUrl ="http://localhost:5048/api";
+
+  public url:string = "http://localhost:5224/api";
+  readonly APIUrl ="";
 
   constructor(private http: HttpClient) { }
 
@@ -14,8 +16,14 @@ export class SharedService {
   public getAdmin():Observable<any[]>{
     return this.http.get<any>(this.APIUrl+'/Admin');
   }
+  public getAdminByUniqueId(value: any){
+    
+  }
   public postAdmin(value:any){
     return this.http.post<any>(this.APIUrl+'/Admin', value);
+  }
+  public updateAdmin(value: any){
+    return this.http.put<any>(this.APIUrl+'/Admin',value);
   }
   public deleteAdmin(value: any){
     return this.http.delete<any>(this.APIUrl+'/Admin/'+ value);

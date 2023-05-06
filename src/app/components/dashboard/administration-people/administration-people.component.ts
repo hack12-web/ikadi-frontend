@@ -5,6 +5,15 @@ import { WebcamImage } from 'ngx-webcam';
 import { Observable, Subject } from 'rxjs';
 import { SharedService } from 'src/app/services/shared.service';
 
+
+interface Gender{
+  value: string;
+  viewValue: string;
+}
+interface IsLive{
+  value: string;
+  viewValue: string;
+}
 @Component({
   selector: 'app-administration-people',
   templateUrl: './administration-people.component.html',
@@ -16,6 +25,15 @@ export class AdministrationPeopleComponent {
   public peopleItems:any[] | any;
   public webcamImage: WebcamImage | any;
   private trigger: Subject<void> = new Subject<void>();
+
+  public gender: Gender[]=[
+    {value : "M", viewValue: "M"},
+    {value : "F", viewValue: "F"}
+  ]
+  public islive: IsLive[]=[
+    {value:"Yes", viewValue:"Yes"},
+    {value:"Not", viewValue:"Not"}
+  ]
 
   constructor(private fb: FormBuilder, private service: SharedService, private _snackBar: MatSnackBar){
     this.peopleForm = this.fb.group({
@@ -60,17 +78,13 @@ export class AdministrationPeopleComponent {
     });
   }
   public async postPersonnes(value:any){
-      await this.service.postPersonne(value).subscribe(res =>{
-        console.log(res);
-    });
-    this.peopleForm.reset();
-    this.openSnackBar("Data add with succes","OK");
-    this.getPersonnes();
+      this.service.postPersonne(value).subscribe(res =>{
+      this.openSnackBar(res,"OK");
+      this.getPersonnes();
+      this.peopleForm.reset();
+    }); 
   }
-  public getAllFildsData(a:any,b:any,c:any,d:any,e:any,f:any,g:any,h:any,i:any,j:any,k:any,l:any,m:any,n:any):void{
-
-  }
-
+  public getAllFildsData(a:any,b:any,c:any,d:any,e:any,f:any,g:any,h:any,i:any,j:any,k:any,l:any,m:any,n:any):void{}
   public openSnackBar(message: string, action: string){
     return this._snackBar.open(message, action);
   }

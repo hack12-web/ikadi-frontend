@@ -17,6 +17,7 @@ export class SideNavComponent {
   public showAdminSyst():void{
     this.showAdministrationSyst = true;
     this.showAppHomeDash = false;
+    this.showAdministrationPeople = false;
   }
   public showAdminPeople():void{
     this.showAdministrationPeople = true;

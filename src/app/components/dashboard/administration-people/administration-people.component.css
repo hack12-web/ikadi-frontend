@@ -1,3 +1,19 @@
 .inputFild{
     padding: 5px;
 }
+.personInfo{
+    border: 2px solid #2986CC;
+    border-radius: 10px;
+}
+.fatherInfo{
+    border: 2px solid #2986CC;
+    border-radius: 10px;
+}
+.motherInfo{
+    border: 2px solid #2986CC;
+    border-radius: 10px;
+}
+.systeInfo{
+    border: 2px solid #2986CC;
+    border-radius: 10px;
+}
