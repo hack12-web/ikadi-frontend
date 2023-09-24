@@ -8,7 +8,7 @@ import { Observable, delay, of } from 'rxjs';
 export class SharedService {
 
   public url:string = "http://localhost:5224/api";
-  readonly APIUrl ="";
+  readonly APIUrl ="http://localhost:5224/api";
 
   constructor(private http: HttpClient) { }
 

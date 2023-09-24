@@ -13,6 +13,7 @@ import { AdministrationSystComponent } from './components/dashboard/administrati
 import { LoginComponent } from './auth/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { WebcamModule } from 'ngx-webcam';
+import { ChartModule, LineSeriesService, CategoryService, LegendService, DataLabelService, TooltipService  } from '@syncfusion/ej2-angular-charts';
 
 //we need to import this before using form in angular
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -41,9 +42,10 @@ import { AdministrationPeopleComponent } from './components/dashboard/administra
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    WebcamModule
+    WebcamModule,
+    ChartModule
   ],
-  providers: [],
+  providers: [LineSeriesService, CategoryService, LegendService, DataLabelService, TooltipService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

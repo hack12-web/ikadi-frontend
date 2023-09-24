@@ -14,6 +14,8 @@ export class LoginComponent {
   public loginForm: FormGroup | any;
   public adminItem: any[] = [];
   public showSpinner: boolean = false;
+  public disabled: boolean = false;
+  public hiden_message: boolean = true;
 
   constructor(private fb: FormBuilder, private route: Router, private service: SharedService){
     this.loginForm = this.fb.group({
@@ -38,6 +40,7 @@ export class LoginComponent {
   }
   public loginAdmin(value: any):void{
     this.showSpinnerProgressBar();
+    this.disabled = true;
     if(value.username == "root" && value.password == "root")
     {
       setTimeout(() =>{
@@ -46,11 +49,16 @@ export class LoginComponent {
     }
     else{
       this.showSpinnerProgressBar();
-      this.loginForm.reset();
+      setTimeout(() =>{
+        this.hiden_message = false;
+        this.showSpinner = false;
+        this.loginForm.reset();
+      },3000);
     }
   }
   
   public showSpinnerProgressBar(){
-    return of(this.showSpinner = true).pipe(delay(1000));
+    // return of(this.showSpinner = true).pipe(delay(1000));
+    this.showSpinner = true;
   }
 }

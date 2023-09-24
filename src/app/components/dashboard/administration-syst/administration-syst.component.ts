@@ -90,12 +90,12 @@ export class AdministrationSystComponent {
   }
 
   public async updateAdminItems(value:any){
-    return this.service.updateAdmin(value).subscribe(res=>{
-      this.openSnackBar(res, "OK");
-      this.adminForm.reset();
-      this.getAdminItems();
-    });
-
+    // return this.service.updateAdmin(value).subscribe(res=>{
+    //   this.openSnackBar(res, "OK");
+    //   this.adminForm.reset();
+    //   this.getAdminItems();
+    // });
+    console.log(value);
   }
   public openSnackBar(message: string, action: string){
     return this._snackBar.open(message, action);
